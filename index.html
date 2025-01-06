@@ -27,23 +27,30 @@
         .opposites {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
-            font-size: 24px;
+            margin-top: 40px;
+            font-size: 48px;
             font-weight: bold;
         }
 
         .opposite {
-            width: 150px;
+            width: 45%;
+            text-align: center;
+        }
+
+        small {
+            font-size: 18px;
+            display: block;
+            margin-top: 10px;
         }
 
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 20px 40px;
+            font-size: 24px;
             cursor: pointer;
             background-color: #FFA500;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
         }
 
         button:hover {
@@ -52,12 +59,12 @@
 
         .line {
             position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 2px;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
             background-color: #000;
-            transform: translateY(-50%);
+            transform: translateX(-50%);
         }
     </style>
 </head>
@@ -73,45 +80,34 @@
 
     <script>
         const opposites = [
-            ["Day", "Night", ["Sun", "Morning", "Walking"], ["Moon", "Evening", "Stars"]],
-            ["Hot", "Cold", ["Fire", "Sun", "Sweat"], ["Ice", "Snow", "Winter"]],
-            ["Light", "Dark", ["Bulb", "Sunbeam", "Glow"], ["Shadow", "Night", "Silhouette"]],
-            ["Happy", "Sad", ["Smile", "Laugh", "Sunshine"], ["Tears", "Frown", "Rain"]],
-            ["Up", "Down", ["Arrow", "Mountain", "Ladder"], ["Hole", "Drop", "Stairs"]],
-            ["Big", "Small", ["Elephant", "Mountain", "Ocean"], ["Ant", "Pebble", "Seed"]],
-            ["Fast", "Slow", ["Cheetah", "Car", "Wind"], ["Turtle", "Snail", "Crawl"]],
-            ["Strong", "Weak", ["Muscles", "Rock", "Steel"], ["Twig", "Paper", "Feather"]],
-            ["Young", "Old", ["Child", "Sapling", "Newborn"], ["Elder", "Tree", "History"]],
-            ["Open", "Closed", ["Door", "Window", "Book"], ["Lock", "Vault", "Envelope"]],
-            ["Hard", "Soft", ["Rock", "Metal", "Wall"], ["Pillow", "Cloud", "Feather"]],
-            ["Wet", "Dry", ["Rain", "Puddle", "Ocean"], ["Desert", "Sand", "Towel"]],
-            ["Sharp", "Dull", ["Knife", "Blade", "Needle"], ["Rock", "Hammer", "Pencil"]],
-            ["Clean", "Dirty", ["Soap", "Water", "Shiny"], ["Mud", "Dust", "Spill"]],
-            ["Full", "Empty", ["Plate", "Glass", "Basket"], ["Vacuum", "Hole", "Jar"]],
-            ["High", "Low", ["Mountain", "Tower", "Sky"], ["Valley", "Pit", "Ground"]],
-            ["Rich", "Poor", ["Gold", "Palace", "Jewels"], ["Coins", "Hut", "Tattered"]],
-            ["Heavy", "Light", ["Boulder", "Truck", "Anchor"], ["Feather", "Balloon", "Cloud"]],
-            ["Loud", "Quiet", ["Drum", "Shout", "Bell"], ["Whisper", "Library", "Silence"]],
-            ["Near", "Far", ["Neighbor", "Doorstep", "Hand"], ["Horizon", "Star", "Journey"]],
-            ["Alive", "Dead", ["Heart", "Tree", "Flower"], ["Skeleton", "Grave", "Ash"]],
-            ["Good", "Bad", ["Angel", "Smile", "Gift"], ["Devil", "Frown", "Trap"]],
-            ["Left", "Right", ["Arrow", "Hand", "Road"], ["Arrow", "Hand", "Turn"]],
-            ["Soft", "Hard", ["Pillow", "Cotton", "Cloud"], ["Brick", "Metal", "Wall"]],
+            ["Day", "Night", ["Sun", "Morning", "Birds"], ["Moon", "Stars", "Owl"]],
+            ["Hot", "Cold", ["Fire", "Sun", "Volcano"], ["Ice", "Snowflake", "Polar Bear"]],
+            ["Light", "Dark", ["Bulb", "Candle", "Sunbeam"], ["Shadow", "Night", "Lantern"]],
+            ["Happy", "Sad", ["Smile", "Rainbow", "Dancing"], ["Tears", "Rain", "Frown"]],
+            ["Up", "Down", ["Balloon", "Kite", "Arrow"], ["Anchor", "Hole", "Ladder"]],
+            ["Big", "Small", ["Elephant", "Mountain", "Ocean"], ["Mouse", "Seed", "Pebble"]],
+            ["Fast", "Slow", ["Cheetah", "Rocket", "Wind"], ["Snail", "Turtle", "Jogging"]],
+            ["Strong", "Weak", ["Bodybuilder", "Bridge", "Steel"], ["Feather", "Twig", "Paper"]],
+            ["Young", "Old", ["Baby", "Sapling", "Fresh Fruit"], ["Elder", "Tree", "Ancient Ruins"]],
+            ["Open", "Closed", ["Door", "Window", "Book"], ["Vault", "Envelope", "Jar"]],
+            ["Hard", "Soft", ["Rock", "Metal", "Table"], ["Cushion", "Pillow", "Cloud"]],
+            ["Wet", "Dry", ["Rain", "Ocean", "Waterfall"], ["Desert", "Towel", "Sponge"]],
+            ["Sharp", "Blunt", ["Knife", "Arrow", "Blade"], ["Stick", "Hammer", "Brick"]],
+            ["Clean", "Dirty", ["Soap", "Water", "Tidy Room"], ["Mud", "Trash", "Spill"]],
+            ["Full", "Empty", ["Plate", "Basket", "Glass"], ["Hole", "Jar", "Cup"]],
+            ["High", "Low", ["Mountain", "Tower", "Plane"], ["Valley", "Well", "Ground"]],
+            ["Rich", "Poor", ["Gold", "Treasure", "Luxury Car"], ["Coins", "Hut", "Empty Wallet"]],
+            ["Heavy", "Light", ["Boulder", "Anchor", "Truck"], ["Feather", "Balloon", "Butterfly"]],
+            ["Loud", "Quiet", ["Drum", "Shout", "Thunder"], ["Library", "Whisper", "Muted TV"]],
+            ["Near", "Far", ["Neighbor", "Fence", "Bridge"], ["Horizon", "Star", "Airplane"]],
+            ["Alive", "Dead", ["Tree", "Heartbeat", "Blooming Flower"], ["Skeleton", "Grave", "Ash"]],
+            ["Good", "Bad", ["Angel", "Sunshine", "Gift"], ["Devil", "Storm", "Trap"]],
+            ["Left", "Right", ["Arrow", "Sign", "Direction"], ["Compass", "Turn", "Path"]],
             ["Sweet", "Sour", ["Candy", "Honey", "Cake"], ["Lemon", "Vinegar", "Pickles"]],
-            ["Warm", "Cool", ["Blanket", "Sunset", "Tea"], ["Breeze", "Shade", "Fan"]],
-            ["Smooth", "Rough", ["Glass", "Ice", "Marble"], ["Rock", "Tree Bark", "Sandpaper"]],
-            ["Round", "Square", ["Ball", "Circle", "Wheel"], ["Box", "Cube", "Table"]],
-            ["Bright", "Dim", ["Sun", "Lamp", "Sparkle"], ["Candle", "Shadow", "Fog"]],
-            ["Full", "Empty", ["Cup", "Basket", "Plate"], ["Void", "Bag", "Bottle"]],
-            ["Flat", "Curved", ["Table", "Pavement", "Wall"], ["Bow", "Arch", "Wave"]],
-            ["Soft", "Hard", ["Cotton", "Plush", "Cushion"], ["Rock", "Brick", "Iron"]],
-            ["Old", "New", ["Antique", "History", "Rust"], ["Modern", "Fresh", "Technology"]],
-            ["Bright", "Dark", ["Star", "Sunbeam", "Lantern"], ["Night", "Shadow", "Moon"]],
-            ["Fast", "Slow", ["Car", "Cheetah", "Arrow"], ["Snail", "Turtle", "Molasses"]],
-            ["Happy", "Sad", ["Laugh", "Cheer", "Sunshine"], ["Rain", "Frown", "Tear"]],
-            ["Hot", "Cold", ["Fire", "Summer", "Volcano"], ["Winter", "Ice", "Blizzard"]],
-            ["Alive", "Dead", ["Flower", "Spring", "Pulse"], ["Bones", "Grave", "Dust"]],
-            ["Sharp", "Blunt", ["Knife", "Needle", "Blade"], ["Hammer", "Rock", "Stick"]]
+            ["Bright", "Dim", ["Star", "Lightbulb", "Spark"], ["Shadow", "Lantern", "Fog"]],
+            ["Soft", "Hard", ["Cloud", "Cotton", "Foam"], ["Brick", "Iron", "Anvil"]],
+            ["Smooth", "Rough", ["Ice", "Glass", "River Stone"], ["Tree Bark", "Sandpaper", "Rock"]],
+            ["Flat", "Curved", ["Table", "Pancake", "Screen"], ["Rainbow", "Bridge", "Bow"]]
         ];
 
         const button = document.getElementById('generateButton');
